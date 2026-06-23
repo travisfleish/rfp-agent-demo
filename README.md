@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RFP Agent OS
+
+Proof-of-concept web application demonstrating Genius Sports' AI-powered media RFP operating system.
+
+## Operating Model
+
+**RFP Intake → Solution Brief → Proposal**
+
+The Solution Brief is the source of truth. Proposal content is a downstream synthesis that does not override missing internal approvals.
+
+## Stack
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS v4
+- shadcn/ui
+- Mock data + deterministic AI logic (no LLM, no database, no auth)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Route | Description |
+|-------|-------------|
+| `/` | Dashboard with summary cards and active RFP table |
+| `/new` | New RFP intake form with mock AI extraction |
+| `/rfps` | All RFP opportunities |
+| `/rfps/[id]` | Solution Brief, workstreams, risks, proposal draft |
+| `/settings` | POC configuration notes |
 
-## Learn More
+## Sample Data
 
-To learn more about Next.js, take a look at the following resources:
+Three seeded RFPs: Nike (Awaiting Inputs), FanDuel (Solution Brief Created), Toyota (Proposal Draft).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+New RFPs created via intake are persisted in browser localStorage.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Mock AI Logic
 
-## Deploy on Vercel
+See `src/lib/ai-logic.ts` for deterministic functions:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Field extraction from intake + free text
+- Complexity classification
+- Internal team routing
+- Risk identification
+- Proposal draft generation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Replace with LLM integration when ready.
+
+## Brand Tokens
+
+Design tokens from the Genius Sports `lovable-brand-template` are applied in `src/app/globals.css` and `src/lib/tokens.ts`.
+
+## Future Integration Points
+
+Comments throughout the codebase mark where to add:
+
+- LLM extraction (Vercel AI SDK)
+- Database (Supabase/Postgres)
+- CRM (Salesforce)
+- Notifications (Slack)
+- Authentication

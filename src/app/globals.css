@@ -1,26 +1,191 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark *));
+
+/* Brand fonts from lovable-brand-template */
+@font-face {
+  font-family: "KlarheitKurrent";
+  src: url("/fonts/KlarheitKurrent-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KlarheitKurrent";
+  src: url("/fonts/KlarheitKurrent-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KlarheitKurrent";
+  src: url("/fonts/ESKlarheitKurrent-Bk_TRIAL.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KlarheitKurrent";
+  src: url("/fonts/ESKlarheitKurrent-Md_TRIAL.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KlarheitKurrent";
+  src: url("/fonts/ESKlarheitKurrent-Smbd_TRIAL.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "RedHatText";
+  src: url("/fonts/RedHatText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "RedHatText";
+  src: url("/fonts/RedHatText-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "RedHatText", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "KlarheitKurrent", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "RedHatText", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  /* Genius Sports brand colors */
+  --color-navy: #0D1226;
+  --color-blue: #0000DC;
+  --color-lightBlue: #95ECFD;
+  --color-brightGreen: #E1FF67;
+  --color-lightGreen: #18C971;
+  --color-green: #047C40;
+  --color-lightPurple: #C2D1FF;
+  --color-purple: #4337A8;
+  --color-lightOrange: #FFEBAF;
+  --color-orange: #FA5D00;
+  --color-lightRed: #F76B6A;
+  --color-red: #C20000;
+  --color-lightGrey: #F6F7F9;
+  --color-lavenderGrey: #E7E7E9;
+  --color-snow: #FAFAFA;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Genius Sports brand-mapped shadcn tokens */
+  --background: #FAFAFA;
+  --foreground: #0D1226;
+  --card: #ffffff;
+  --card-foreground: #0D1226;
+  --popover: #ffffff;
+  --popover-foreground: #0D1226;
+  --primary: #0D1226;
+  --primary-foreground: #ffffff;
+  --secondary: #F6F7F9;
+  --secondary-foreground: #0D1226;
+  --muted: #F6F7F9;
+  --muted-foreground: #4337A8;
+  --accent: #C2D1FF;
+  --accent-foreground: #0D1226;
+  --destructive: #C20000;
+  --border: #E7E7E9;
+  --input: #E7E7E9;
+  --ring: #0000DC;
+  --chart-1: #0000DC;
+  --chart-2: #4337A8;
+  --chart-3: #18C971;
+  --chart-4: #FA5D00;
+  --chart-5: #95ECFD;
+  --radius: 0.75rem;
+  --sidebar: #0D1226;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #E1FF67;
+  --sidebar-primary-foreground: #0D1226;
+  --sidebar-accent: rgba(255, 255, 255, 0.08);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #95ECFD;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 0, 220, 0.06), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(194, 209, 255, 0.35), transparent),
+      radial-gradient(ellipse 50% 30% at 0% 100%, rgba(225, 255, 103, 0.08), transparent);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight text-navy;
+  }
+  ::selection {
+    background: rgba(0, 0, 220, 0.15);
+    color: #0D1226;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .surface-card {
+    @apply rounded-xl border border-lavenderGrey/80 bg-white shadow-[0_1px_2px_rgba(13,18,38,0.04),0_4px_16px_rgba(13,18,38,0.04)];
+  }
+  .surface-card-hover {
+    @apply transition-all duration-200 hover:border-lavenderGrey hover:shadow-[0_2px_4px_rgba(13,18,38,0.06),0_8px_24px_rgba(13,18,38,0.08)] hover:-translate-y-px;
+  }
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-blue via-purple to-blue bg-clip-text text-transparent;
+  }
+  .accent-line {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-blue/30 to-transparent;
+  }
 }
