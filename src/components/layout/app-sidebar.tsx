@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   FilePlus2,
   Files,
+  Archive,
   Settings,
   Zap,
 } from "lucide-react";
@@ -26,7 +27,8 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { title: "Dashboard", href: "/", icon: LayoutDashboard },
   { title: "New RFP", href: "/new", icon: FilePlus2 },
-  { title: "RFPs", href: "/rfps", icon: Files },
+  { title: "Existing RFPs", href: "/rfps", icon: Files },
+  { title: "Historical RFPs", href: "/historical", icon: Archive },
   { title: "Settings", href: "/settings", icon: Settings },
 ];
 

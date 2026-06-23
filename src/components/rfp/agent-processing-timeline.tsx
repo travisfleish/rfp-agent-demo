@@ -9,13 +9,25 @@ import { cn } from "@/lib/utils";
 
 export function AgentProcessingTimeline({
   onComplete,
+  steps = PROCESSING_STEPS,
+  currentStep,
+  title = "Intake Agent Processing",
+  description = "Simulating AI agent extraction and routing workflow...",
 }: {
-  onComplete: () => void;
+  onComplete?: () => void;
+  steps?: readonly string[];
+  currentStep?: number;
+  title?: string;
+  description?: string;
 }) {
   const [activeStep, setActiveStep] = useState(0);
+  const isControlled = currentStep !== undefined;
+  const displayStep = isControlled ? currentStep : activeStep;
 
   useEffect(() => {
-    if (activeStep >= PROCESSING_STEPS.length) {
+    if (isControlled || !onComplete) return;
+
+    if (activeStep >= steps.length) {
       const timer = setTimeout(onComplete, 400);
       return () => clearTimeout(timer);
     }
@@ -25,11 +37,11 @@ export function AgentProcessingTimeline({
     }, 550);
 
     return () => clearTimeout(timer);
-  }, [activeStep, onComplete]);
+  }, [activeStep, onComplete, isControlled, steps.length]);
 
   const progress = Math.min(
     100,
-    Math.round((activeStep / PROCESSING_STEPS.length) * 100)
+    Math.round((displayStep / steps.length) * 100)
   );
 
   return (
@@ -37,20 +49,18 @@ export function AgentProcessingTimeline({
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-base text-navy">
           <Loader2 className="h-5 w-5 animate-spin text-blue" />
-          Intake Agent Processing
+          {title}
         </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Simulating AI agent extraction and routing workflow...
-        </p>
+        <p className="text-sm text-muted-foreground">{description}</p>
       </CardHeader>
       <CardContent className="space-y-6">
         <Progress value={progress} className="h-2" />
 
         <ol className="space-y-3">
-          {PROCESSING_STEPS.map((step, index) => {
-            const isComplete = index < activeStep;
-            const isActive = index === activeStep && activeStep < PROCESSING_STEPS.length;
-            const isPending = index > activeStep;
+          {steps.map((step, index) => {
+            const isComplete = index < displayStep;
+            const isActive = index === displayStep && displayStep < steps.length;
+            const isPending = index > displayStep;
 
             return (
               <li

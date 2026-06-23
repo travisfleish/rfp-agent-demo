@@ -10,39 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { AdvertiserLogo } from "@/components/rfp/advertiser-logo";
 import { ComplexityBadge, RiskBadge } from "@/components/rfp/risk-badge";
 import { StatusBadge } from "@/components/rfp/status-badge";
 import { formatDate, isDueSoon } from "@/lib/rfp-utils";
 import type { RfpRecord } from "@/types/rfp";
 import { cn } from "@/lib/utils";
-
-const avatarColors = [
-  "bg-blue/10 text-blue ring-blue/20",
-  "bg-purple/10 text-purple ring-purple/20",
-  "bg-orange/10 text-orange ring-orange/20",
-  "bg-green/10 text-green ring-green/20",
-];
-
-function AdvertiserAvatar({ name }: { name: string }) {
-  const initials = name
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
-  const colorIndex = name.charCodeAt(0) % avatarColors.length;
-
-  return (
-    <div
-      className={cn(
-        "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-semibold ring-1",
-        avatarColors[colorIndex]
-      )}
-    >
-      {initials}
-    </div>
-  );
-}
 
 export function RfpTable({ rfps }: { rfps: RfpRecord[] }) {
   if (rfps.length === 0) {
@@ -89,7 +62,7 @@ export function RfpTable({ rfps }: { rfps: RfpRecord[] }) {
                   href={`/rfps/${rfp.id}`}
                   className="flex items-center gap-3"
                 >
-                  <AdvertiserAvatar name={rfp.advertiser} />
+                  <AdvertiserLogo name={rfp.advertiser} />
                   <span className="font-medium text-navy transition-colors group-hover:text-blue">
                     {rfp.advertiser}
                   </span>

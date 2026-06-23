@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
+import { AdvertiserLogo } from "@/components/rfp/advertiser-logo";
 import { ComplexityBadge, RiskBadge } from "@/components/rfp/risk-badge";
 import { StatusBadge } from "@/components/rfp/status-badge";
 import { formatDate } from "@/lib/rfp-utils";
@@ -171,12 +172,17 @@ export function RfpDetailHeader({
         <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
           Solution Brief · Source of Truth
         </p>
-        <h2 className="mt-1 font-heading text-2xl font-bold tracking-tight text-navy">
-          {campaign}
-        </h2>
-        <p className="mt-0.5 text-sm text-muted-foreground">
-          {advertiser} · {agency}
-        </p>
+        <div className="mt-2 flex items-start gap-4">
+          <AdvertiserLogo name={advertiser} size="md" />
+          <div className="min-w-0">
+            <h2 className="font-heading text-2xl font-bold tracking-tight text-navy">
+              {campaign}
+            </h2>
+            <p className="mt-0.5 text-sm text-muted-foreground">
+              {advertiser} · {agency}
+            </p>
+          </div>
+        </div>
       </div>
       <div className="p-5">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">

@@ -9,7 +9,7 @@ export function RfpsListPage() {
 
   if (!isLoaded) {
     return (
-      <AppShell title="RFPs">
+      <AppShell title="Existing RFPs">
         <div className="flex h-64 items-center justify-center text-muted-foreground">
           Loading...
         </div>
@@ -19,7 +19,7 @@ export function RfpsListPage() {
 
   return (
     <AppShell
-      title="All RFPs"
+      title="Existing RFPs"
       description={`${rfps.length} opportunities in the system`}
     >
       <RfpTable rfps={rfps} />
