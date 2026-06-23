@@ -44,7 +44,7 @@ function FormSection({
   children: React.ReactNode;
 }) {
   return (
-    <Card className="border-lavenderGrey shadow-sm">
+    <Card className="border-border shadow-sm">
       <CardHeader className="pb-4">
         <CardTitle className="text-base font-semibold text-navy">{title}</CardTitle>
       </CardHeader>
@@ -275,7 +275,7 @@ export function IntakeForm() {
         />
       </FormSection>
 
-      <Card className="border-lavenderGrey shadow-sm">
+      <Card className="border-border shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="text-base font-semibold text-navy">
             Free-Text Intake

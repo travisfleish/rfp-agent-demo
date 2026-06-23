@@ -61,10 +61,10 @@ export function HistoricalSearchPanel() {
 
   return (
     <div className="space-y-6">
-      <Card className="surface-card overflow-hidden border-lavenderGrey/60">
+      <Card className="surface-card overflow-hidden">
         <CardContent className="p-6">
           <div className="mb-4 flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple/10 to-lightPurple/20 ring-1 ring-purple/20">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent ring-1 ring-lightPurple/40">
               <Sparkles className="h-5 w-5 text-purple" />
             </div>
             <div>
@@ -115,7 +115,7 @@ export function HistoricalSearchPanel() {
                   runSearch(example);
                 }}
                 disabled={isSearching}
-                className="rounded-full bg-lightGrey/60 px-3 py-1 text-xs text-navy/70 transition-colors hover:bg-lightBlue/20 hover:text-navy disabled:opacity-50"
+                className="rounded-full bg-accent px-3 py-1 text-xs text-purple transition-colors hover:bg-lightPurple/40 hover:text-purple disabled:opacity-50"
               >
                 {example}
               </button>
@@ -152,7 +152,7 @@ export function HistoricalSearchPanel() {
             <Link
               key={result.id}
               href={`/historical/${result.id}`}
-              className="surface-card group block rounded-xl p-5 transition-all hover:ring-2 hover:ring-blue/20"
+              className="surface-card group block rounded-xl p-5 transition-all hover:ring-2 hover:ring-navy/10"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0 flex-1">
@@ -184,7 +184,7 @@ export function HistoricalSearchPanel() {
                   )}
                 </div>
                 <div className="flex shrink-0 flex-col items-end gap-2">
-                  <div className="rounded-lg bg-lightBlue/10 px-2.5 py-1 text-xs font-semibold tabular-nums text-blue">
+                  <div className="rounded-lg bg-lightBlue/20 px-2.5 py-1 text-xs font-semibold tabular-nums text-blue">
                     {Math.round(result.score * 10)}% match
                   </div>
                   <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-blue" />

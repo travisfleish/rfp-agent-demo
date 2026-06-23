@@ -3,9 +3,9 @@ import type { FieldConfidence } from "@/types/rfp";
 import { cn } from "@/lib/utils";
 
 const styles: Record<FieldConfidence, string> = {
-  High: "bg-lightGreen/20 text-green border-lightGreen/40",
-  Medium: "bg-lightOrange/40 text-orange border-lightOrange/60",
-  Low: "bg-lightRed/20 text-red border-lightRed/40",
+  High: "bg-lightGreen/15 text-green border-lightGreen/40",
+  Medium: "bg-lightOrange/40 text-orange border-lightOrange/50",
+  Low: "bg-lightRed/15 text-red border-lightRed/40",
 };
 
 export function ConfidenceBadge({

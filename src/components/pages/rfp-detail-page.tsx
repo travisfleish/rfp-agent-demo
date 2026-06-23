@@ -16,7 +16,7 @@ import { useRfpStore } from "@/providers/rfp-provider";
 import { ArrowLeft } from "lucide-react";
 
 export function RfpDetailPage({ id }: { id: string }) {
-  const { getRfp, isLoaded } = useRfpStore();
+  const { getRfp, updateRfp, isLoaded } = useRfpStore();
   const rfp = getRfp(id);
 
   if (!isLoaded) {
@@ -51,6 +51,16 @@ export function RfpDetailPage({ id }: { id: string }) {
       ? rfp.missingInputs
       : missingFields.map((f) => `Confirm ${f.toLowerCase()}`);
 
+  const approvalSubmitted = rfp.currentStage === "Pending Approval";
+
+  const handleSubmitForApproval = () => {
+    updateRfp(id, (current) => ({
+      ...current,
+      currentStage: "Pending Approval",
+      nextAction: "Submitted — awaiting Commercial approval",
+    }));
+  };
+
   return (
     <AppShell
       title={rfp.campaign}
@@ -78,6 +88,8 @@ export function RfpDetailPage({ id }: { id: string }) {
           percentComplete={rfp.percentComplete}
           currentStage={rfp.currentStage}
           nextAction={rfp.nextAction}
+          onSubmitForApproval={handleSubmitForApproval}
+          approvalSubmitted={approvalSubmitted}
         />
 
         <Tabs defaultValue="brief" className="w-full">

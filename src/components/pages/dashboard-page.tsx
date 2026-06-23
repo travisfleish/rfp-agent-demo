@@ -52,19 +52,17 @@ export function DashboardPage() {
       }
     >
       <div className="space-y-8">
-        <div className="relative overflow-hidden rounded-2xl border border-lavenderGrey/80 bg-gradient-to-br from-navy via-[#151d3a] to-[#1a2550] p-6 text-white shadow-[0_8px_32px_rgba(13,18,38,0.2)] md:p-8">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-blue/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-brightGreen/10 blur-2xl" />
-          <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="surface-card overflow-hidden border-l-4 border-l-blue p-6 md:p-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl space-y-2">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-lightBlue ring-1 ring-white/10">
+              <div className="accent-chip">
                 <Sparkles className="h-3 w-3" />
                 AI-Powered Intake
               </div>
-              <h2 className="font-heading text-2xl font-bold tracking-tight text-white md:text-3xl">
+              <h2 className="font-heading text-2xl font-bold tracking-tight text-navy md:text-3xl">
                 Media RFP Operating System
               </h2>
-              <p className="text-sm leading-relaxed text-white/70">
+              <p className="text-sm leading-relaxed text-muted-foreground">
                 Turn unstructured advertiser requests into structured Solution Briefs,
                 route internal workstreams, and synthesize proposal drafts — all in one flow.
               </p>
@@ -72,7 +70,7 @@ export function DashboardPage() {
             <Button
               asChild
               size="lg"
-              className="shrink-0 bg-brightGreen text-navy shadow-[0_0_24px_rgba(225,255,103,0.3)] hover:bg-brightGreen/90"
+              className="shrink-0 bg-navy text-white shadow-sm hover:bg-navy/90"
             >
               <Link href="/new">
                 Start Intake

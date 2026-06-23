@@ -14,13 +14,6 @@ import { formatDate } from "@/lib/rfp-utils";
 import type { HistoricalRfpRecord, RfpOutcome } from "@/types/historical";
 import { cn } from "@/lib/utils";
 
-const avatarColors = [
-  "bg-blue/10 text-blue ring-blue/20",
-  "bg-purple/10 text-purple ring-purple/20",
-  "bg-orange/10 text-orange ring-orange/20",
-  "bg-green/10 text-green ring-green/20",
-];
-
 function AdvertiserAvatar({ name }: { name: string }) {
   const initials = name
     .split(/\s+/)
@@ -28,24 +21,18 @@ function AdvertiserAvatar({ name }: { name: string }) {
     .map((w) => w[0])
     .join("")
     .toUpperCase();
-  const colorIndex = name.charCodeAt(0) % avatarColors.length;
 
   return (
-    <div
-      className={cn(
-        "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-semibold ring-1",
-        avatarColors[colorIndex]
-      )}
-    >
+    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-xs font-semibold text-navy/70 ring-1 ring-border">
       {initials}
     </div>
   );
 }
 
 const outcomeStyles: Record<RfpOutcome, string> = {
-  Won: "bg-green/10 text-green ring-green/20",
-  Lost: "bg-orange/10 text-orange ring-orange/20",
-  "No Bid": "bg-lavenderGrey/40 text-navy/60 ring-lavenderGrey/60",
+  Won: "bg-lightGreen/15 text-green border-lightGreen/40",
+  Lost: "bg-lightOrange/40 text-orange border-lightOrange/50",
+  "No Bid": "bg-secondary text-muted-foreground border-border",
 };
 
 export function OutcomeBadge({ outcome }: { outcome: RfpOutcome }) {
@@ -75,7 +62,7 @@ export function HistoricalRfpTable({ rfps }: { rfps: HistoricalRfpRecord[] }) {
     <div className="surface-card overflow-hidden">
       <Table>
         <TableHeader>
-          <TableRow className="border-lavenderGrey/60 bg-lightGrey/40 hover:bg-lightGrey/40">
+          <TableRow className="border-border/60 bg-secondary/40 hover:bg-secondary/40">
             <TableHead className="font-semibold text-navy/70">Advertiser</TableHead>
             <TableHead className="font-semibold text-navy/70">Campaign</TableHead>
             <TableHead className="hidden font-semibold text-navy/70 md:table-cell">
@@ -92,7 +79,7 @@ export function HistoricalRfpTable({ rfps }: { rfps: HistoricalRfpRecord[] }) {
           {rfps.map((rfp) => (
             <TableRow
               key={rfp.id}
-              className="group cursor-pointer border-lavenderGrey/40 transition-colors hover:bg-lightBlue/5"
+              className="group cursor-pointer border-border/60 transition-colors hover:bg-secondary/50"
             >
               <TableCell>
                 <Link
@@ -100,14 +87,14 @@ export function HistoricalRfpTable({ rfps }: { rfps: HistoricalRfpRecord[] }) {
                   className="flex items-center gap-3"
                 >
                   <AdvertiserAvatar name={rfp.advertiser} />
-                  <span className="font-medium text-navy transition-colors group-hover:text-blue">
+                  <span className="font-medium text-navy transition-colors group-hover:text-navy/70">
                     {rfp.advertiser}
                   </span>
                 </Link>
               </TableCell>
               <TableCell className="max-w-[220px]">
                 <Link href={`/historical/${rfp.id}`} className="block">
-                  <span className="block truncate font-medium text-navy/80 group-hover:text-blue">
+                  <span className="block truncate font-medium text-navy/80 group-hover:text-navy/70">
                     {rfp.campaign}
                   </span>
                   <span className="mt-0.5 block truncate text-xs text-muted-foreground">

@@ -251,7 +251,7 @@ export function AiIntakeHub() {
           onBriefChange={handleBriefChange}
         />
 
-        <div className="flex justify-end gap-3 border-t border-lavenderGrey pt-6">
+        <div className="flex justify-end gap-3 border-t border-border pt-6">
           <Button
             variant="outline"
             onClick={() => {
@@ -291,7 +291,7 @@ export function AiIntakeHub() {
         onValueChange={(v) => setActiveTab(v as IntakeSourceType)}
         className="w-full"
       >
-        <TabsList className="mb-6 flex h-auto w-full flex-wrap gap-1.5 rounded-xl border border-lavenderGrey/80 bg-lightGrey/50 p-1.5">
+        <TabsList className="mb-6 flex h-auto w-full flex-wrap gap-1.5 rounded-xl border border-border bg-secondary/50 p-1.5">
           <TabsTrigger
             value="text"
             className="gap-1.5 rounded-lg px-4 py-2.5 data-[state=active]:bg-white data-[state=active]:text-navy data-[state=active]:shadow-sm"
@@ -338,11 +338,11 @@ export function AiIntakeHub() {
             }}
             className={`surface-card cursor-pointer border-2 border-dashed p-12 text-center transition-all duration-200 ${
               isDragging
-                ? "border-blue bg-lightBlue/20 shadow-[0_0_0_4px_rgba(0,0,220,0.08)]"
-                : "border-lavenderGrey hover:border-blue/40 hover:bg-lightGrey/30 hover:shadow-md"
+                ? "border-blue bg-lightBlue/15 shadow-[0_0_0_4px_rgba(0,0,220,0.06)]"
+                : "border-border hover:border-blue/30 hover:bg-accent/50 hover:shadow-md"
             }`}
           >
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue/10 ring-1 ring-blue/20">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue/8 ring-1 ring-blue/15">
               <FileUp className="h-7 w-7 text-blue" />
             </div>
             <p className="mt-5 text-base font-medium text-navy">
@@ -364,7 +364,7 @@ export function AiIntakeHub() {
           </div>
 
           {selectedFile && (
-            <Card className="mt-4 border-lavenderGrey shadow-sm">
+            <Card className="mt-4 border-border shadow-sm">
               <CardContent className="space-y-3 pt-6">
                 <div className="grid gap-2 text-sm sm:grid-cols-3">
                   <div>
@@ -384,7 +384,7 @@ export function AiIntakeHub() {
                     </span>
                   </div>
                 </div>
-                <p className="rounded-md bg-lightBlue/20 px-3 py-2 text-sm text-navy">
+                <p className="rounded-md bg-lightBlue/15 px-3 py-2 text-sm text-navy ring-1 ring-lightBlue/30">
                   File received. In production, this would be parsed by the intake agent
                   using document extraction.
                 </p>
@@ -445,7 +445,7 @@ export function AiIntakeHub() {
         </TabsContent>
       </Tabs>
 
-      <div className="flex justify-end gap-3 border-t border-lavenderGrey pt-6">
+      <div className="flex justify-end gap-3 border-t border-border pt-6">
         <Button
           type="button"
           variant="outline"

@@ -36,17 +36,17 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="border-r border-white/10 bg-gradient-to-b from-navy via-[#111833] to-[#0a0f1f]">
-      <SidebarHeader className="border-b border-white/10 px-4 py-5">
+    <Sidebar className="border-r border-white/8 bg-navy">
+      <SidebarHeader className="border-b border-white/8 px-4 py-5">
         <Link href="/" className="group flex items-center gap-3">
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brightGreen to-lightGreen shadow-[0_0_20px_rgba(225,255,103,0.25)] transition-transform group-hover:scale-105">
-            <Zap className="h-5 w-5 text-navy" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-lightBlue/30 transition-colors group-hover:bg-white/15">
+            <Zap className="h-5 w-5 text-lightBlue" />
           </div>
           <div className="flex flex-col gap-0.5">
             <span className="font-heading text-sm font-semibold leading-none tracking-tight text-white">
               RFP Agent OS
             </span>
-            <span className="text-[11px] font-medium uppercase tracking-widest text-lightBlue/70">
+            <span className="text-[11px] font-medium uppercase tracking-widest text-lightBlue/60">
               Genius Sports
             </span>
           </div>
@@ -73,18 +73,18 @@ export function AppSidebar() {
                       className={cn(
                         "h-10 rounded-lg px-3 transition-all",
                         isActive
-                          ? "bg-white/12 text-white shadow-sm ring-1 ring-white/10"
-                          : "text-white/70 hover:bg-white/8 hover:text-white"
+                          ? "bg-white/10 text-white ring-1 ring-white/10"
+                          : "text-white/60 hover:bg-white/6 hover:text-white/90"
                       )}
                     >
                       <Link href={item.href} className="relative">
                         {isActive && (
-                          <span className="absolute -left-3 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-brightGreen" />
+                          <span className="absolute -left-3 top-1/2 h-5 w-1 -translate-y-1/2 rounded-r-full bg-lightBlue" />
                         )}
                         <item.icon
                           className={cn(
                             "h-4 w-4",
-                            isActive ? "text-brightGreen" : "text-white/60"
+                            isActive ? "text-lightBlue" : "text-white/50"
                           )}
                         />
                         <span className="font-medium">{item.title}</span>
@@ -98,8 +98,8 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-white/10 p-4">
-        <div className="rounded-lg bg-white/5 px-3 py-2.5 ring-1 ring-white/10">
+      <SidebarFooter className="border-t border-white/8 p-4">
+        <div className="rounded-lg bg-white/5 px-3 py-2.5 ring-1 ring-white/8">
           <p className="text-[11px] font-medium text-white/80">
             Commercial Operations
           </p>

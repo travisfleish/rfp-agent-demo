@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Progress } from "@/components/ui/progress";
 import {
   Table,
@@ -18,6 +18,8 @@ import type { RfpRecord } from "@/types/rfp";
 import { cn } from "@/lib/utils";
 
 export function RfpTable({ rfps }: { rfps: RfpRecord[] }) {
+  const router = useRouter();
+
   if (rfps.length === 0) {
     return (
       <div className="surface-card flex flex-col items-center justify-center px-6 py-16 text-center">
@@ -33,7 +35,7 @@ export function RfpTable({ rfps }: { rfps: RfpRecord[] }) {
     <div className="surface-card overflow-hidden">
       <Table>
         <TableHeader>
-          <TableRow className="border-lavenderGrey/60 bg-lightGrey/40 hover:bg-lightGrey/40">
+          <TableRow className="border-border/60 bg-secondary/40 hover:bg-secondary/40">
             <TableHead className="font-semibold text-navy/70">Advertiser</TableHead>
             <TableHead className="font-semibold text-navy/70">Agency</TableHead>
             <TableHead className="font-semibold text-navy/70">Campaign</TableHead>
@@ -55,18 +57,25 @@ export function RfpTable({ rfps }: { rfps: RfpRecord[] }) {
           {rfps.map((rfp) => (
             <TableRow
               key={rfp.id}
-              className="group cursor-pointer border-lavenderGrey/40 transition-colors hover:bg-lightBlue/5"
+              role="link"
+              tabIndex={0}
+              aria-label={`View ${rfp.advertiser} opportunity`}
+              className="group cursor-pointer border-border/60 transition-colors hover:bg-secondary/50"
+              onClick={() => router.push(`/rfps/${rfp.id}`)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  router.push(`/rfps/${rfp.id}`);
+                }
+              }}
             >
               <TableCell>
-                <Link
-                  href={`/rfps/${rfp.id}`}
-                  className="flex items-center gap-3"
-                >
+                <div className="flex items-center gap-3">
                   <AdvertiserLogo name={rfp.advertiser} />
                   <span className="font-medium text-navy transition-colors group-hover:text-blue">
                     {rfp.advertiser}
                   </span>
-                </Link>
+                </div>
               </TableCell>
               <TableCell className="text-muted-foreground">{rfp.agency}</TableCell>
               <TableCell className="max-w-[200px] truncate text-navy/80">
@@ -100,7 +109,7 @@ export function RfpTable({ rfps }: { rfps: RfpRecord[] }) {
                 <div className="flex min-w-[100px] items-center gap-2.5">
                   <Progress
                     value={rfp.percentComplete}
-                    className="h-1.5 flex-1 bg-lavenderGrey/60 [&>div]:bg-gradient-to-r [&>div]:from-blue [&>div]:to-lightBlue"
+                    className="h-1.5 flex-1 bg-secondary [&>div]:bg-blue"
                   />
                   <span className="w-8 text-xs font-medium tabular-nums text-muted-foreground">
                     {rfp.percentComplete}%

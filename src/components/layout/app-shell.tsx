@@ -23,8 +23,8 @@ export function AppShell({
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset className="relative bg-transparent">
-        <header className="sticky top-0 z-10 shrink-0 border-b border-lavenderGrey/80 bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/75">
-          <div className="h-px bg-gradient-to-r from-blue/40 via-lightPurple/60 to-brightGreen/40" />
+        <header className="sticky top-0 z-10 shrink-0 border-b border-border bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/85">
+          <div className="h-px bg-blue/20" />
           <div className="flex h-16 items-center gap-3 px-4 md:px-6">
             <SidebarTrigger className="-ml-1 text-navy/70 hover:text-navy" />
             <Separator orientation="vertical" className="mr-1 h-5" />

@@ -1,13 +1,6 @@
 import { getAdvertiserLogo } from "@/lib/advertiser-logos";
 import { cn } from "@/lib/utils";
 
-const avatarColors = [
-  "bg-blue/10 text-blue ring-blue/20",
-  "bg-purple/10 text-purple ring-purple/20",
-  "bg-orange/10 text-orange ring-orange/20",
-  "bg-green/10 text-green ring-green/20",
-];
-
 function AdvertiserInitials({ name, className }: { name: string; className?: string }) {
   const initials = name
     .split(/\s+/)
@@ -15,13 +8,11 @@ function AdvertiserInitials({ name, className }: { name: string; className?: str
     .map((w) => w[0])
     .join("")
     .toUpperCase();
-  const colorIndex = name.charCodeAt(0) % avatarColors.length;
 
   return (
     <div
       className={cn(
-        "flex shrink-0 items-center justify-center rounded-lg text-xs font-semibold ring-1",
-        avatarColors[colorIndex],
+        "flex shrink-0 items-center justify-center rounded-lg bg-secondary text-xs font-semibold text-navy/70 ring-1 ring-border",
         className
       )}
     >
@@ -49,7 +40,7 @@ export function AdvertiserLogo({
   return (
     <div
       className={cn(
-        "flex shrink-0 items-center justify-center rounded-lg bg-white p-1 ring-1 ring-lavenderGrey/60",
+        "flex shrink-0 items-center justify-center rounded-lg bg-white p-1 ring-1 ring-border",
         sizeClass,
         className
       )}

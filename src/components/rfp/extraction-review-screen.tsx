@@ -60,7 +60,7 @@ function ReviewSection({
   children: React.ReactNode;
 }) {
   return (
-    <Card className="border-lavenderGrey shadow-sm">
+    <Card className="border-border shadow-sm">
       <CardHeader className="pb-3">
         <CardTitle className="text-sm font-semibold text-navy">{title}</CardTitle>
       </CardHeader>
@@ -71,12 +71,12 @@ function ReviewSection({
 
 function WorkstreamReviewCard({ workstream }: { workstream: Workstream }) {
   const statusColors: Record<string, string> = {
-    Requested: "bg-lightBlue/40 text-blue",
-    "In Progress": "bg-lightOrange/60 text-orange",
+    Requested: "bg-lightBlue/30 text-blue ring-1 ring-lightBlue/40",
+    "In Progress": "bg-lightOrange/40 text-orange ring-1 ring-lightOrange/50",
   };
 
   return (
-    <Card className="border-lavenderGrey shadow-sm">
+    <Card className="border-border shadow-sm">
       <CardHeader className="pb-2">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div className="flex items-center gap-2">
@@ -88,7 +88,7 @@ function WorkstreamReviewCard({ workstream }: { workstream: Workstream }) {
             </CardTitle>
           </div>
           <span
-            className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[workstream.status] ?? "bg-lavenderGrey text-navy"}`}
+            className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[workstream.status] ?? "bg-secondary text-muted-foreground ring-1 ring-border"}`}
           >
             {workstream.status}
           </span>

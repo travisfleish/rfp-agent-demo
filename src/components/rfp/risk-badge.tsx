@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import type { Complexity, RiskLevel } from "@/types/rfp";
 
 const complexityStyles: Record<Complexity, string> = {
-  Low: "bg-lightGreen/20 text-green",
-  Medium: "bg-lightOrange/60 text-orange",
-  High: "bg-lightRed/30 text-red",
+  Low: "bg-lightGreen/15 text-green border-lightGreen/40",
+  Medium: "bg-lightOrange/40 text-orange border-lightOrange/50",
+  High: "bg-lightRed/15 text-red border-lightRed/40",
 };
 
 export function ComplexityBadge({
@@ -17,7 +17,7 @@ export function ComplexityBadge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium",
+        "inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-medium",
         complexityStyles[complexity],
         className
       )}
@@ -28,9 +28,9 @@ export function ComplexityBadge({
 }
 
 const riskStyles: Record<RiskLevel, string> = {
-  Low: "bg-lightGreen/20 text-green border-lightGreen/50",
-  Medium: "bg-lightOrange/60 text-orange border-lightOrange/50",
-  High: "bg-lightRed/30 text-red border-lightRed/50",
+  Low: "bg-lightGreen/15 text-green border-lightGreen/40",
+  Medium: "bg-lightOrange/40 text-orange border-lightOrange/50",
+  High: "bg-lightRed/15 text-red border-lightRed/40",
 };
 
 export function RiskBadge({

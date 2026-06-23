@@ -14,9 +14,9 @@ const riskLabels: Record<Risk["type"], string> = {
 export function RiskPanel({ risks }: { risks: Risk[] }) {
   if (risks.length === 0) {
     return (
-      <Card className="border-lavenderGrey shadow-sm">
+      <Card className="border-border shadow-sm">
         <CardContent className="flex items-center gap-3 p-6">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-lightGreen/20">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-lightGreen/15">
             <AlertTriangle className="h-5 w-5 text-green" />
           </div>
           <div>
@@ -33,7 +33,7 @@ export function RiskPanel({ risks }: { risks: Risk[] }) {
   return (
     <div className="space-y-3">
       {risks.map((risk) => (
-        <Card key={risk.id} className="border-lavenderGrey shadow-sm">
+        <Card key={risk.id} className="border-border shadow-sm">
           <CardHeader className="pb-2">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <CardTitle className="text-sm font-semibold text-navy">
@@ -65,7 +65,7 @@ export function RequirementsView({
   return (
     <div className="space-y-4">
       {clarifications.length > 0 && (
-        <Card className="border-orange/30 bg-lightOrange/20 shadow-sm">
+        <Card className="border-lightOrange/40 bg-lightOrange/15 shadow-sm">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-semibold text-orange">
               Missing Inputs / Clarifications Needed
@@ -81,7 +81,7 @@ export function RequirementsView({
         </Card>
       )}
 
-      <Card className="border-lavenderGrey shadow-sm">
+      <Card className="border-border shadow-sm">
         <CardHeader className="pb-2">
           <CardTitle className="text-sm font-semibold text-navy">
             Original Intake

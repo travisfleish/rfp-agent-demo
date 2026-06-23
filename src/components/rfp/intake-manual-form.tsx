@@ -39,7 +39,7 @@ function FormSection({
   children: React.ReactNode;
 }) {
   return (
-    <Card className="border-lavenderGrey shadow-sm">
+    <Card className="border-border shadow-sm">
       <CardHeader className="pb-4">
         <CardTitle className="text-base font-semibold text-navy">{title}</CardTitle>
       </CardHeader>
@@ -136,7 +136,7 @@ export function IntakeManualForm({
         <FormField label="Data Enrichment" id="dataEnrichmentNeeds" value={form.dataEnrichmentNeeds} onChange={updateField} placeholder="Data enrichment needs" />
       </FormSection>
 
-      <Card className="border-lavenderGrey shadow-sm">
+      <Card className="border-border shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="text-base font-semibold text-navy">Additional Notes</CardTitle>
         </CardHeader>

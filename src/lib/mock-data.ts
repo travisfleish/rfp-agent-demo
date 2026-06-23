@@ -298,10 +298,10 @@ export const SEED_RFPS: RfpRecord[] = [
     campaign: "College Football Sponsorship Extension",
     owner: "Lisa Park",
     deadline: "2026-06-25",
-    status: "Proposal Draft",
+    status: "In Review",
     complexity: "High",
     riskLevel: "Low",
-    percentComplete: 78,
+    percentComplete: 100,
     intakeNotes:
       "Toyota extending CFB sponsorship package. Broadcast integration, custom creative, brand lift. $4M budget. Managed service preferred.",
     solutionBrief: {
@@ -388,10 +388,11 @@ export const SEED_RFPS: RfpRecord[] = [
         routingReason: "Attribution, brand lift, or reporting requirements present",
         request: "Define measurement design and data enrichment scope",
         owner: "Elena Vasquez",
-        status: "In Progress",
+        status: "Complete",
         dueDate: "2026-06-22",
-        response: "Brand lift study design drafted. Geo-lift methodology under review.",
-        confidence: "Medium",
+        response:
+          "Brand lift study approved. Geo-lift methodology finalized with dealer DMA data from client.",
+        confidence: "High",
         dependencies: "Dealer geo data from client",
       },
     ],
@@ -409,13 +410,12 @@ export const SEED_RFPS: RfpRecord[] = [
         "Aug–Dec flight. Broadcast integration + CTV/programmatic amplification. Rivalry game and bowl season moment triggers.",
       measurementPlan:
         "Brand lift study for sponsorship recall + geo-lift for dealership visits. Bi-weekly reporting.",
-      openQuestions:
-        "Dealer geo data pending from client for geo-lift methodology.",
+      openQuestions: "None — all internal workstreams signed off.",
       internalCaveats:
-        "⚠ Draft ready for internal review. Measurement geo-lift contingent on client data delivery.",
+        "Ready for Commercial approval. Do not share externally until approval is recorded.",
     },
-    currentStage: "Proposal Draft",
-    nextAction: "Final measurement sign-off, then Commercial review before client delivery",
+    currentStage: "Proposal Review",
+    nextAction: "Submit for approval",
   },
 ];
 

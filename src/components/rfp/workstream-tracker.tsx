@@ -26,11 +26,11 @@ const statusOptions: WorkstreamStatus[] = [
 const confidenceOptions = ["Low", "Medium", "High"] as const;
 
 const statusColors: Record<WorkstreamStatus, string> = {
-  "Not Started": "bg-lavenderGrey text-navy",
-  Requested: "bg-lightBlue/40 text-blue",
-  "In Progress": "bg-lightOrange/60 text-orange",
-  Blocked: "bg-lightRed/30 text-red",
-  Complete: "bg-lightGreen/20 text-green",
+  "Not Started": "bg-secondary text-muted-foreground ring-1 ring-border",
+  Requested: "bg-lightBlue/30 text-blue ring-1 ring-lightBlue/40",
+  "In Progress": "bg-lightOrange/40 text-orange ring-1 ring-lightOrange/50",
+  Blocked: "bg-lightRed/15 text-red ring-1 ring-lightRed/40",
+  Complete: "bg-lightGreen/15 text-green ring-1 ring-lightGreen/40",
 };
 
 function WorkstreamCard({
@@ -43,7 +43,7 @@ function WorkstreamCard({
   const { updateWorkstream } = useRfpStore();
 
   return (
-    <Card className="border-lavenderGrey shadow-sm">
+    <Card className="border-border shadow-sm">
       <CardHeader className="pb-3">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div className="flex items-center gap-2">
@@ -67,7 +67,7 @@ function WorkstreamCard({
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="rounded-md bg-lightGrey/80 p-3">
+        <div className="rounded-md bg-secondary p-3">
           <p className="text-xs font-medium text-muted-foreground">
             Why routed
           </p>
@@ -82,7 +82,7 @@ function WorkstreamCard({
         </div>
 
         {workstream.dependencies !== "None" && (
-          <div className="flex items-start gap-2 rounded-md border border-lightOrange/50 bg-lightOrange/20 p-3">
+          <div className="flex items-start gap-2 rounded-md border border-lightOrange/40 bg-lightOrange/15 p-3">
             <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-orange" />
             <div>
               <p className="text-xs font-medium text-orange">Dependencies</p>

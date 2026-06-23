@@ -45,7 +45,7 @@ export function AgentProcessingTimeline({
   );
 
   return (
-    <Card className="mx-auto max-w-2xl border-lavenderGrey shadow-sm">
+    <Card className="mx-auto max-w-2xl border-border shadow-sm">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-base text-navy">
           <Loader2 className="h-5 w-5 animate-spin text-blue" />
@@ -54,7 +54,7 @@ export function AgentProcessingTimeline({
         <p className="text-sm text-muted-foreground">{description}</p>
       </CardHeader>
       <CardContent className="space-y-6">
-        <Progress value={progress} className="h-2" />
+        <Progress value={progress} className="h-2 bg-secondary [&>div]:bg-blue" />
 
         <ol className="space-y-3">
           {steps.map((step, index) => {
@@ -68,8 +68,8 @@ export function AgentProcessingTimeline({
                 className={cn(
                   "flex items-center gap-3 rounded-lg border px-4 py-3 transition-all duration-300",
                   isComplete && "border-lightGreen/40 bg-lightGreen/10",
-                  isActive && "border-blue/30 bg-lightBlue/20",
-                  isPending && "border-lavenderGrey bg-white opacity-60"
+                  isActive && "border-blue/20 bg-lightBlue/15",
+                  isPending && "border-border bg-white opacity-60"
                 )}
               >
                 {isComplete ? (
@@ -77,7 +77,7 @@ export function AgentProcessingTimeline({
                 ) : isActive ? (
                   <Loader2 className="h-5 w-5 shrink-0 animate-spin text-blue" />
                 ) : (
-                  <Circle className="h-5 w-5 shrink-0 text-lavenderGrey" />
+                  <Circle className="h-5 w-5 shrink-0 text-muted-foreground/40" />
                 )}
                 <span
                   className={cn(

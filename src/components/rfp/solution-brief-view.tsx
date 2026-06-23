@@ -2,13 +2,14 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { AdvertiserLogo } from "@/components/rfp/advertiser-logo";
 import { ComplexityBadge, RiskBadge } from "@/components/rfp/risk-badge";
 import { StatusBadge } from "@/components/rfp/status-badge";
 import { formatDate } from "@/lib/rfp-utils";
 import type { SolutionBrief } from "@/types/rfp";
-import { ArrowRight, Calendar, User } from "lucide-react";
+import { ArrowRight, Calendar, CheckCircle2, Send, User } from "lucide-react";
 
 function BriefSection({
   title,
@@ -129,7 +130,7 @@ export function SolutionBriefView({ brief }: { brief: SolutionBrief }) {
             {brief.recommendedProducts.map((product) => (
               <span
                 key={product}
-                className="rounded-full bg-lightPurple/30 px-3 py-1 text-xs font-medium text-purple"
+                className="rounded-full bg-accent px-3 py-1 text-xs font-medium text-purple ring-1 ring-lightPurple/40"
               >
                 {product}
               </span>
@@ -153,6 +154,8 @@ export function RfpDetailHeader({
   percentComplete,
   currentStage,
   nextAction,
+  onSubmitForApproval,
+  approvalSubmitted,
 }: {
   advertiser: string;
   campaign: string;
@@ -165,10 +168,17 @@ export function RfpDetailHeader({
   percentComplete: number;
   currentStage: string;
   nextAction: string;
+  onSubmitForApproval?: () => void;
+  approvalSubmitted?: boolean;
 }) {
+  const readyForApproval =
+    percentComplete === 100 &&
+    status === "In Review" &&
+    !approvalSubmitted &&
+    onSubmitForApproval;
   return (
     <div className="surface-card overflow-hidden p-0">
-      <div className="border-b border-lavenderGrey/60 bg-gradient-to-r from-lightGrey/60 via-white to-lightPurple/20 px-5 py-4">
+      <div className="border-b border-border bg-accent/40 px-5 py-4">
         <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
           Solution Brief · Source of Truth
         </p>
@@ -205,7 +215,7 @@ export function RfpDetailHeader({
         </div>
       </div>
 
-      <div className="mt-5 grid gap-4 border-t border-lavenderGrey pt-5 md:grid-cols-2">
+      <div className="mt-5 grid gap-4 border-t border-border pt-5 md:grid-cols-2">
         <div>
           <p className="text-xs font-medium text-muted-foreground">Current Stage</p>
           <p className="mt-1 text-sm font-medium text-navy">{currentStage}</p>
@@ -226,9 +236,41 @@ export function RfpDetailHeader({
         </div>
         <Progress
           value={percentComplete}
-          className="h-2 bg-lavenderGrey/60 [&>div]:bg-gradient-to-r [&>div]:from-blue [&>div]:to-lightBlue"
+          className="h-2 bg-secondary [&>div]:bg-blue"
         />
       </div>
+
+      {(readyForApproval || approvalSubmitted) && (
+        <div className="mt-5 border-t border-border pt-5">
+          {approvalSubmitted ? (
+            <div className="flex items-center gap-3 rounded-xl border border-lightGreen/40 bg-lightGreen/10 px-4 py-3">
+              <CheckCircle2 className="h-5 w-5 shrink-0 text-green" />
+              <div>
+                <p className="text-sm font-semibold text-navy">Submitted for approval</p>
+                <p className="text-xs text-muted-foreground">
+                  Commercial team has been notified. Awaiting sign-off before client delivery.
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3 rounded-xl border border-lightBlue/40 bg-lightBlue/10 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold text-navy">Ready to submit</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">
+                  All workstreams are complete and the proposal draft is finalized.
+                </p>
+              </div>
+              <Button
+                onClick={onSubmitForApproval}
+                className="shrink-0 bg-navy text-white shadow-sm hover:bg-navy/90"
+              >
+                <Send className="mr-2 h-4 w-4" />
+                Submit for Approval
+              </Button>
+            </div>
+          )}
+        </div>
+      )}
       </div>
     </div>
   );

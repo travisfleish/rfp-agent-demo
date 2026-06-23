@@ -3,27 +3,27 @@ import type { RfpStatus } from "@/types/rfp";
 
 const statusStyles: Record<RfpStatus, { badge: string; dot: string }> = {
   Intake: {
-    badge: "bg-lavenderGrey/60 text-navy border-lavenderGrey",
-    dot: "bg-navy/40",
+    badge: "bg-secondary text-muted-foreground border-border",
+    dot: "bg-muted-foreground/50",
   },
   "Solution Brief Created": {
-    badge: "bg-lightPurple/50 text-purple border-lightPurple/80",
+    badge: "bg-accent text-purple border-lightPurple/50",
     dot: "bg-purple",
   },
   "Awaiting Inputs": {
-    badge: "bg-lightOrange/70 text-orange border-lightOrange/80",
+    badge: "bg-lightOrange/40 text-orange border-lightOrange/60",
     dot: "bg-orange",
   },
   "In Review": {
-    badge: "bg-lightBlue/50 text-blue border-lightBlue/80",
+    badge: "bg-lightBlue/30 text-blue border-lightBlue/50",
     dot: "bg-blue",
   },
   "Proposal Draft": {
-    badge: "bg-lightGreen/30 text-green border-lightGreen/80",
+    badge: "bg-lightGreen/15 text-green border-lightGreen/40",
     dot: "bg-lightGreen",
   },
   Complete: {
-    badge: "bg-brightGreen/40 text-green border-brightGreen/60",
+    badge: "bg-green/10 text-green border-green/20",
     dot: "bg-green",
   },
 };

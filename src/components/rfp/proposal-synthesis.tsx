@@ -19,7 +19,7 @@ const sections: Array<{
 export function ProposalSynthesis({ draft }: { draft: ProposalDraft }) {
   return (
     <div className="space-y-4">
-      <div className="flex items-start gap-3 rounded-lg border border-blue/20 bg-blue/5 p-4">
+      <div className="flex items-start gap-3 rounded-lg border border-blue/15 bg-lightBlue/10 p-4">
         <FileOutput className="mt-0.5 h-5 w-5 shrink-0 text-blue" />
         <div>
           <p className="text-sm font-semibold text-navy">
@@ -32,7 +32,7 @@ export function ProposalSynthesis({ draft }: { draft: ProposalDraft }) {
         </div>
       </div>
 
-      <div className="flex items-start gap-3 rounded-lg border border-orange/30 bg-lightOrange/30 p-4">
+      <div className="flex items-start gap-3 rounded-lg border border-lightOrange/40 bg-lightOrange/15 p-4">
         <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-orange" />
         <p className="text-sm text-navy">{draft.internalCaveats}</p>
       </div>
@@ -41,7 +41,7 @@ export function ProposalSynthesis({ draft }: { draft: ProposalDraft }) {
         {sections
           .filter((s) => s.key !== "internalCaveats")
           .map(({ key, title }) => (
-            <Card key={key} className="border-lavenderGrey shadow-sm">
+            <Card key={key} className="border-border shadow-sm">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-semibold text-navy">
                   {title}
