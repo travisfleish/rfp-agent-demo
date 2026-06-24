@@ -8,8 +8,8 @@ import {
   Files,
   Archive,
   Settings,
-  Zap,
 } from "lucide-react";
+import { GeniusLogo } from "@/components/brand/genius-logo";
 import {
   Sidebar,
   SidebarContent,
@@ -39,17 +39,14 @@ export function AppSidebar() {
     <Sidebar className="border-r border-white/8 bg-navy">
       <SidebarHeader className="border-b border-white/8 px-4 py-5">
         <Link href="/" className="group flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-lightBlue/30 transition-colors group-hover:bg-white/15">
-            <Zap className="h-5 w-5 text-lightBlue" />
-          </div>
-          <div className="flex flex-col gap-0.5">
-            <span className="font-heading text-sm font-semibold leading-none tracking-tight text-white">
-              RFP Agent OS
-            </span>
-            <span className="text-[11px] font-medium uppercase tracking-widest text-lightBlue/60">
-              Genius Sports
-            </span>
-          </div>
+          <GeniusLogo
+            variant="marque"
+            color="white"
+            className="h-10 w-10 shrink-0 object-contain"
+          />
+          <span className="font-heading text-sm font-semibold leading-none tracking-tight text-white">
+            RFP Agent OS
+          </span>
         </Link>
       </SidebarHeader>
 

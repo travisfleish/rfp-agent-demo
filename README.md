@@ -2,12 +2,6 @@
 
 Proof-of-concept web application demonstrating Genius Sports' AI-powered media RFP operating system.
 
-## Operating Model
-
-**RFP Intake → Solution Brief → Proposal**
-
-The Solution Brief is the source of truth. Proposal content is a downstream synthesis that does not override missing internal approvals.
-
 ## Stack
 
 - Next.js (App Router)

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AppShell } from "@/components/layout/app-shell";
+import { PageHero } from "@/components/layout/page-hero";
 import { ProposalSynthesis } from "@/components/rfp/proposal-synthesis";
 import { RequirementsView, RiskPanel } from "@/components/rfp/risk-panel";
 import {
@@ -21,9 +22,12 @@ export function RfpDetailPage({ id }: { id: string }) {
 
   if (!isLoaded) {
     return (
-      <AppShell title="Loading...">
-        <div className="flex h-64 items-center justify-center text-muted-foreground">
-          Loading RFP...
+      <AppShell>
+        <div className="space-y-10">
+          <PageHero title="Loading..." size="compact" />
+          <div className="flex h-64 items-center justify-center text-muted-foreground">
+            Loading RFP...
+          </div>
         </div>
       </AppShell>
     );
@@ -31,15 +35,18 @@ export function RfpDetailPage({ id }: { id: string }) {
 
   if (!rfp) {
     return (
-      <AppShell title="RFP Not Found">
-        <div className="flex flex-col items-center justify-center gap-4 py-16">
-          <p className="text-muted-foreground">This RFP could not be found.</p>
-          <Button asChild variant="outline">
-            <Link href="/">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Dashboard
-            </Link>
-          </Button>
+      <AppShell>
+        <div className="space-y-10">
+          <PageHero title="RFP Not Found" size="compact" />
+          <div className="flex flex-col items-center justify-center gap-4 py-16">
+            <p className="text-muted-foreground">This RFP could not be found.</p>
+            <Button asChild variant="outline">
+              <Link href="/">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Dashboard
+              </Link>
+            </Button>
+          </div>
         </div>
       </AppShell>
     );
@@ -62,73 +69,78 @@ export function RfpDetailPage({ id }: { id: string }) {
   };
 
   return (
-    <AppShell
-      title={rfp.campaign}
-      description={`${rfp.advertiser} · ${rfp.agency}`}
-    >
-      <div className="mb-4">
-        <Button asChild variant="ghost" size="sm" className="-ml-2">
-          <Link href="/">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Dashboard
-          </Link>
-        </Button>
-      </div>
-
-      <div className="space-y-6">
-        <RfpDetailHeader
-          advertiser={rfp.advertiser}
-          campaign={rfp.campaign}
-          agency={rfp.agency}
-          owner={rfp.owner}
-          deadline={rfp.deadline}
-          status={rfp.status}
-          complexity={rfp.complexity}
-          riskLevel={rfp.riskLevel}
-          percentComplete={rfp.percentComplete}
-          currentStage={rfp.currentStage}
-          nextAction={rfp.nextAction}
-          onSubmitForApproval={handleSubmitForApproval}
-          approvalSubmitted={approvalSubmitted}
+    <AppShell>
+      <div className="space-y-10">
+        <PageHero
+          title={rfp.campaign}
+          description={`${rfp.advertiser} · ${rfp.agency}`}
+          size="compact"
         />
 
-        <Tabs defaultValue="brief" className="w-full">
-          <TabsList className="mb-4 flex h-auto flex-wrap gap-1 bg-white p-1">
-            <TabsTrigger value="brief">Solution Brief</TabsTrigger>
-            <TabsTrigger value="requirements">Requirements</TabsTrigger>
-            <TabsTrigger value="workstreams">
-              Workstreams ({rfp.workstreams.length})
-            </TabsTrigger>
-            <TabsTrigger value="risks">
-              Risks ({rfp.risks.length})
-            </TabsTrigger>
-            <TabsTrigger value="proposal">Proposal Draft</TabsTrigger>
-          </TabsList>
+        <div>
+          <Button asChild variant="ghost" size="sm" className="-ml-2 mb-4">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Dashboard
+            </Link>
+          </Button>
 
-          <TabsContent value="brief">
-            <SolutionBriefView brief={rfp.solutionBrief} />
-          </TabsContent>
-
-          <TabsContent value="requirements">
-            <RequirementsView
-              intakeNotes={rfp.intakeNotes}
-              missingFields={missingFields}
-              clarificationItems={clarificationItems}
+          <div className="space-y-6">
+            <RfpDetailHeader
+              advertiser={rfp.advertiser}
+              campaign={rfp.campaign}
+              agency={rfp.agency}
+              owner={rfp.owner}
+              deadline={rfp.deadline}
+              status={rfp.status}
+              complexity={rfp.complexity}
+              riskLevel={rfp.riskLevel}
+              percentComplete={rfp.percentComplete}
+              currentStage={rfp.currentStage}
+              nextAction={rfp.nextAction}
+              onSubmitForApproval={handleSubmitForApproval}
+              approvalSubmitted={approvalSubmitted}
             />
-          </TabsContent>
 
-          <TabsContent value="workstreams">
-            <WorkstreamTracker workstreams={rfp.workstreams} rfpId={rfp.id} />
-          </TabsContent>
+            <Tabs defaultValue="brief" className="w-full">
+              <TabsList className="mb-4 flex-wrap">
+                <TabsTrigger value="brief">Solution Brief</TabsTrigger>
+                <TabsTrigger value="requirements">Requirements</TabsTrigger>
+                <TabsTrigger value="workstreams">
+                  Workstreams ({rfp.workstreams.length})
+                </TabsTrigger>
+                <TabsTrigger value="risks">
+                  Risks ({rfp.risks.length})
+                </TabsTrigger>
+                <TabsTrigger value="proposal">Proposal Draft</TabsTrigger>
+              </TabsList>
 
-          <TabsContent value="risks">
-            <RiskPanel risks={rfp.risks} />
-          </TabsContent>
+              <TabsContent value="brief">
+                <SolutionBriefView brief={rfp.solutionBrief} />
+              </TabsContent>
 
-          <TabsContent value="proposal">
-            <ProposalSynthesis draft={rfp.proposalDraft} />
-          </TabsContent>
-        </Tabs>
+              <TabsContent value="requirements">
+                <RequirementsView
+                  intakeNotes={rfp.intakeNotes}
+                  missingFields={missingFields}
+                  clarificationItems={clarificationItems}
+                />
+              </TabsContent>
+
+              <TabsContent value="workstreams">
+                <WorkstreamTracker workstreams={rfp.workstreams} rfpId={rfp.id} />
+              </TabsContent>
+
+              <TabsContent value="risks">
+                <RiskPanel risks={rfp.risks} />
+              </TabsContent>
+
+              <TabsContent value="proposal">
+                <ProposalSynthesis draft={rfp.proposalDraft} />
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
       </div>
     </AppShell>
   );

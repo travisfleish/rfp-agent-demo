@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AppShell } from "@/components/layout/app-shell";
+import { PageHero } from "@/components/layout/page-hero";
 import { RfpTable } from "@/components/rfp/rfp-table";
 import { SummaryCard } from "@/components/rfp/summary-cards";
 import { Button } from "@/components/ui/button";
@@ -19,7 +20,6 @@ import {
   ClipboardList,
   FilePlus2,
   FileStack,
-  Sparkles,
 } from "lucide-react";
 
 export function DashboardPage() {
@@ -29,7 +29,7 @@ export function DashboardPage() {
 
   if (!isLoaded) {
     return (
-      <AppShell title="Dashboard" showPipeline>
+      <AppShell>
         <div className="flex h-64 items-center justify-center text-muted-foreground">
           Loading RFPs...
         </div>
@@ -38,47 +38,29 @@ export function DashboardPage() {
   }
 
   return (
-    <AppShell
-      title="Dashboard"
-      description="Active RFP opportunities and pipeline status"
-      showPipeline
-      headerAction={
-        <Button asChild className="bg-navy text-white shadow-sm hover:bg-navy/90">
-          <Link href="/new">
-            <FilePlus2 className="mr-2 h-4 w-4" />
-            New RFP
-          </Link>
-        </Button>
-      }
-    >
-      <div className="space-y-8">
-        <div className="surface-card overflow-hidden border-l-4 border-l-blue p-6 md:p-8">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-xl space-y-2">
-              <div className="accent-chip">
-                <Sparkles className="h-3 w-3" />
-                AI-Powered Intake
-              </div>
-              <h2 className="font-heading text-2xl font-bold tracking-tight text-navy md:text-3xl">
-                Media RFP Operating System
-              </h2>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Turn unstructured advertiser requests into structured Solution Briefs,
-                route internal workstreams, and synthesize proposal drafts — all in one flow.
-              </p>
-            </div>
+    <AppShell>
+      <div className="space-y-10">
+        <PageHero
+          title={
+            <>
+              <span className="block text-blue">Genius Sports</span>
+              <span className="mt-1 block text-navy">Media RFP Operating System</span>
+            </>
+          }
+          description="Turn unstructured advertiser requests into structured Solution Briefs, route internal workstreams, and synthesize proposal drafts — all in one flow."
+          action={
             <Button
               asChild
               size="lg"
-              className="shrink-0 bg-navy text-white shadow-sm hover:bg-navy/90"
+              className="bg-navy text-white shadow-sm hover:bg-navy/90"
             >
               <Link href="/new">
-                Start Intake
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <FilePlus2 className="mr-2 h-4 w-4" />
+                New RFP
               </Link>
             </Button>
-          </div>
-        </div>
+          }
+        />
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <SummaryCard

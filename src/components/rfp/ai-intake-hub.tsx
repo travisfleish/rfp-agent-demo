@@ -291,32 +291,20 @@ export function AiIntakeHub() {
         onValueChange={(v) => setActiveTab(v as IntakeSourceType)}
         className="w-full"
       >
-        <TabsList className="mb-6 flex h-auto w-full flex-wrap gap-1.5 rounded-xl border border-border bg-secondary/50 p-1.5">
-          <TabsTrigger
-            value="text"
-            className="gap-1.5 rounded-lg px-4 py-2.5 data-[state=active]:bg-white data-[state=active]:text-navy data-[state=active]:shadow-sm"
-          >
+        <TabsList variant="segmented" className="mb-6 w-full flex-wrap">
+          <TabsTrigger value="text">
             <MessageSquareText className="h-4 w-4" />
             Paste Email / Brief
           </TabsTrigger>
-          <TabsTrigger
-            value="file"
-            className="gap-1.5 rounded-lg px-4 py-2.5 data-[state=active]:bg-white data-[state=active]:text-navy data-[state=active]:shadow-sm"
-          >
+          <TabsTrigger value="file">
             <FileUp className="h-4 w-4" />
             Upload RFP File
           </TabsTrigger>
-          <TabsTrigger
-            value="quick_request"
-            className="gap-1.5 rounded-lg px-4 py-2.5 data-[state=active]:bg-white data-[state=active]:text-navy data-[state=active]:shadow-sm"
-          >
+          <TabsTrigger value="quick_request">
             <Zap className="h-4 w-4" />
             Quick Request
           </TabsTrigger>
-          <TabsTrigger
-            value="manual"
-            className="gap-1.5 rounded-lg px-4 py-2.5 data-[state=active]:bg-white data-[state=active]:text-navy data-[state=active]:shadow-sm"
-          >
+          <TabsTrigger value="manual">
             <PenLine className="h-4 w-4" />
             Manual Entry / Override
           </TabsTrigger>
