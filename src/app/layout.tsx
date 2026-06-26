@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from "next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { RfpProvider } from "@/providers/rfp-provider";
@@ -20,7 +21,8 @@ export default function RootLayout({
         <TooltipProvider>
           <RfpProvider>{children}</RfpProvider>
         </TooltipProvider>
-      </body>
+      <Analytics />
+        </body>
     </html>
   );
 }
